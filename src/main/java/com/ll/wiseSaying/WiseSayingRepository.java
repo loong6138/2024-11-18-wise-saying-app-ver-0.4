@@ -18,8 +18,7 @@ public class WiseSayingRepository {
     }
 
     void deleteById(int number) {
-        WiseSaying delete = map.get(number);
-        if (delete == null) {
+        if (map.get(number) == null) {
             throw new NullPointerException(number + "");
         } else {
             map.remove(number);
