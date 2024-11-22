@@ -1,13 +1,13 @@
-package com.ll.wiseSaying;
+package com.ll.wiseSaying.domain;
 
 public class wiseSaying {
 
-    private int number;
+    private int id;
     private String message;
     private String author;
 
-    public wiseSaying(int number, String message, String author) {
-        this.number = number;
+    public wiseSaying(int id, String message, String author) {
+        this.id = id;
         this.message = message;
         this.author = author;
     }
@@ -28,16 +28,16 @@ public class wiseSaying {
         this.author = author;
     }
 
-    public int getNumber() {
-        return number;
+    public int getId() {
+        return id;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return number + " / " + author + " / " + message;
+        return id + " / " + author + " / " + message;
     }
 }

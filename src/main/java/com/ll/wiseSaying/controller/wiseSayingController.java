@@ -1,4 +1,7 @@
-package com.ll.wiseSaying;
+package com.ll.wiseSaying.controller;
+
+import com.ll.wiseSaying.domain.wiseSaying;
+import com.ll.wiseSaying.service.wiseSayingService;
 
 import java.util.Scanner;
 
@@ -28,20 +31,20 @@ public class wiseSayingController {
                 System.out.println("----------------------");
                 service.findAll();
 
-            } else if (input.contains("삭제?id=")) {
+            } else if (input.startsWith("삭제?id=")) {
                 boolean delete = service.deleteById(Integer.parseInt(input.substring(6)));
                 if (delete) {
                     System.out.println(Integer.parseInt(input.substring(6)) + "번 명언이 삭제되었습니다.");
                 }
 
-            } else if (input.contains("수정?id=")) {
+            } else if (input.startsWith("수정?id=")) {
                 int id = Integer.parseInt(input.substring(6));
-                wiseSaying saying = service.findById(id);
-                if (saying != null) {
-                    System.out.println("명언(기존) : " + saying.getMessage());
+                wiseSaying existingValue = service.findById(id);
+                if (existingValue != null) {
+                    System.out.println("명언(기존) : " + existingValue.getMessage());
                     System.out.print("명언 : ");
                     String message = scanner.nextLine();
-                    System.out.println("작가(기존) : " + saying.getAuthor());
+                    System.out.println("작가(기존) : " + existingValue.getAuthor());
                     System.out.print("작가 : ");
                     String author = scanner.nextLine();
                     service.updateById(id, message, author);

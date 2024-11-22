@@ -1,14 +1,17 @@
-package com.ll.wiseSaying;
+package com.ll.wiseSaying.service;
+
+import com.ll.wiseSaying.domain.wiseSaying;
+import com.ll.wiseSaying.repository.wiseSayingRepository;
 
 public class wiseSayingService {
 
     wiseSayingRepository repository = new wiseSayingRepository();
 
-    int register(String message, String author) {
+    public int register(String message, String author) {
         return repository.register(message, author);
     }
 
-    boolean deleteById(int id) {
+    public boolean deleteById(int id) {
         try {
             repository.deleteById(id);
             return true;
@@ -18,11 +21,11 @@ public class wiseSayingService {
         }
     }
 
-    void updateById(int id, String message, String author) {
+    public void updateById(int id, String message, String author) {
         repository.updateById(id, message, author);
     }
 
-    wiseSaying findById(int id) {
+    public wiseSaying findById(int id) {
         try {
             return repository.findById(id);
         } catch (Exception e) {
@@ -31,7 +34,7 @@ public class wiseSayingService {
         }
     }
 
-    void findAll() {
+    public void findAll() {
         repository.findAll();
     }
 }
