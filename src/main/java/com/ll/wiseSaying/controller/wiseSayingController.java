@@ -23,8 +23,8 @@ public class wiseSayingController {
                 String message = scanner.nextLine();
                 System.out.print("작가 : ");
                 String author = scanner.nextLine();
-                int id = service.register(message, author);
-                System.out.println(id + "번 명언이 등록되었습니다.");
+                int newId = service.register(message, author);
+                System.out.println(newId + "번 명언이 등록되었습니다.");
 
             } else if (input.equals("목록")) {
                 System.out.println("번호 / 작가 / 명언");

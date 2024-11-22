@@ -7,6 +7,11 @@ public class wiseSayingService {
 
     wiseSayingRepository repository = new wiseSayingRepository();
 
+    public wiseSayingService() {
+        repository.loadQuote();
+        repository.loadLastId();
+    }
+
     public int register(String message, String author) {
         return repository.register(message, author);
     }

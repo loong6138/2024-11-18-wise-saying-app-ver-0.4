@@ -2,14 +2,8 @@ package com.ll.wiseSaying.repository;
 
 import com.ll.wiseSaying.domain.wiseSaying;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class wiseSayingRepository {
 
@@ -20,7 +14,6 @@ public class wiseSayingRepository {
 
     public int register(String message, String author) {
         ++lastId;
-        System.out.println(lastId);
         wiseSaying wiseSaying = new wiseSaying(lastId, message, author);
         map.put(lastId, wiseSaying);
         saveQuote(wiseSaying);
@@ -74,12 +67,56 @@ public class wiseSayingRepository {
         }
     }
 
-    private void saveLastId() {
+    public void saveLastId() {
         File file = new File(LAST_ID_FILE);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(String.valueOf(lastId));
         } catch (IOException e) {
             exceptionHandler(e);
+        }
+    }
+
+    public void loadQuote() {
+        File folder = new File(QUOTE_FOLDER);
+        if (!folder.exists()) return;
+
+        File[] files = folder.listFiles((dir, name) -> name.endsWith(".json"));
+        if (files == null) return;
+
+        for (File file : files) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                StringBuilder content = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    content.append(line);
+                }
+
+                String json = content.toString();
+                int id = Integer.parseInt(json.split("\"id\": ")[1].split(",")[0]);
+                String message = json.split("\"message\": \"")[1].split("\",")[0];
+                String author = json.split("\"author\": \"")[1].split("\"")[0];
+
+                map.put(id, new wiseSaying(id, message, author));
+                lastId = Math.max(lastId, id);
+            } catch (Exception e) {
+                exceptionHandler(e);
+            }
+        }
+    }
+
+    public void loadLastId() {
+        File file = new File(LAST_ID_FILE);
+        if (file.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String lastIdStr = reader.readLine();
+                if (lastIdStr != null && !lastIdStr.isEmpty()) {
+                    lastId = Integer.parseInt(lastIdStr);
+                }
+            } catch (IOException e) {
+                exceptionHandler(e);
+            }
+        } else {
+            lastId = 0; // 파일이 없으면 0
         }
     }
 
