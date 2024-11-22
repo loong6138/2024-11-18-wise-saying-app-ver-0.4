@@ -11,6 +11,7 @@ public class wiseSayingRepository {
     private int lastId;
     private static final String QUOTE_FOLDER = System.getProperty("user.dir") + "/src/main/java/com/ll/wiseSaying/db/wiseSaying";
     private static final String LAST_ID_FILE = System.getProperty("user.dir") + "/src/main/java/com/ll/wiseSaying/db/wiseSaying/lastId.txt";
+    private static final String DATA_FILE = System.getProperty("user.dir") + "/src/main/java/com/ll/wiseSaying/db/wiseSaying/data.json";
 
     public int register(String message, String author) {
         ++lastId;
@@ -117,6 +118,31 @@ public class wiseSayingRepository {
             }
         } else {
             lastId = 0; // 파일이 없으면 0
+        }
+    }
+
+    public void build() {
+        File file = new File(DATA_FILE);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write("[\n");
+            int size = map.size();
+            int index = 0;
+            for (Map.Entry<Integer, wiseSaying> entry : map.entrySet()) {
+                wiseSaying wiseSaying = entry.getValue();
+                writer.write("   {\n");
+                writer.write("    \"id\": " + wiseSaying.getId() + ",\n");
+                writer.write("    \"content\": \"" + wiseSaying.getMessage() + "\",\n");
+                writer.write("    \"author\": \"" + wiseSaying.getAuthor() + "\"\n");
+                writer.write("  }");
+                index++;
+                if (index < size) {
+                    writer.write(",");
+                }
+                writer.write("\n");
+            }
+            writer.write("]");
+        } catch (Exception e) {
+            exceptionHandler(e);
         }
     }
 

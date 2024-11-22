@@ -50,6 +50,10 @@ public class wiseSayingController {
                     service.updateById(id, message, author);
                 }
 
+            } else if (input.equals("빌드")) {
+                service.build();
+                System.out.println("data.json 파일의 내용이 갱신되었습니다.");
+
             } else if (input.equals("종료")) {
                 scanner.close();
                 break;

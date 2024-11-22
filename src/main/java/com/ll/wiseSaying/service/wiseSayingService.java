@@ -42,4 +42,8 @@ public class wiseSayingService {
     public void findAll() {
         repository.findAll();
     }
+
+    public void build() {
+        repository.build();
+    }
 }
