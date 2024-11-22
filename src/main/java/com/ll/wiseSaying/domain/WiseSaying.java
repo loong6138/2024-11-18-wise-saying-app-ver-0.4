@@ -1,12 +1,12 @@
 package com.ll.wiseSaying.domain;
 
-public class wiseSaying {
+public class WiseSaying {
 
     private int id;
     private String message;
     private String author;
 
-    public wiseSaying(int id, String message, String author) {
+    public WiseSaying(int id, String message, String author) {
         this.id = id;
         this.message = message;
         this.author = author;

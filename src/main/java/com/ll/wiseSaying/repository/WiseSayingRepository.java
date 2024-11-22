@@ -1,13 +1,13 @@
 package com.ll.wiseSaying.repository;
 
-import com.ll.wiseSaying.domain.wiseSaying;
+import com.ll.wiseSaying.domain.WiseSaying;
 
 import java.io.*;
 import java.util.*;
 
-public class wiseSayingRepository {
+public class WiseSayingRepository {
 
-    LinkedHashMap<Integer, wiseSaying> map = new LinkedHashMap<>();
+    LinkedHashMap<Integer, WiseSaying> map = new LinkedHashMap<>();
     private int lastId;
     private static final String QUOTE_FOLDER = System.getProperty("user.dir") + "/src/main/java/com/ll/wiseSaying/db/wiseSaying";
     private static final String LAST_ID_FILE = System.getProperty("user.dir") + "/src/main/java/com/ll/wiseSaying/db/wiseSaying/lastId.txt";
@@ -15,7 +15,7 @@ public class wiseSayingRepository {
 
     public int register(String message, String author) {
         ++lastId;
-        wiseSaying wiseSaying = new wiseSaying(lastId, message, author);
+        WiseSaying wiseSaying = new WiseSaying(lastId, message, author);
         map.put(lastId, wiseSaying);
         saveQuote(wiseSaying);
         saveLastId();
@@ -31,12 +31,12 @@ public class wiseSayingRepository {
     }
 
     public void updateById(int id, String message, String author) {
-        wiseSaying update = new wiseSaying(id, message, author);
+        WiseSaying update = new WiseSaying(id, message, author);
         map.replace(id, update);
     }
 
-    public wiseSaying findById(int id) {
-        wiseSaying findById = map.get(id);
+    public WiseSaying findById(int id) {
+        WiseSaying findById = map.get(id);
         if (findById == null) {
             throw new NullPointerException(id + "");
         } else {
@@ -55,7 +55,7 @@ public class wiseSayingRepository {
         }
     }
 
-    private void saveQuote(wiseSaying wiseSaying) {
+    private void saveQuote(WiseSaying wiseSaying) {
         File file = new File(QUOTE_FOLDER, lastId + ".json");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write("{\n");
@@ -97,7 +97,7 @@ public class wiseSayingRepository {
                 String message = json.split("\"message\": \"")[1].split("\",")[0];
                 String author = json.split("\"author\": \"")[1].split("\"")[0];
 
-                map.put(id, new wiseSaying(id, message, author));
+                map.put(id, new WiseSaying(id, message, author));
                 lastId = Math.max(lastId, id);
             } catch (Exception e) {
                 exceptionHandler(e);
@@ -127,8 +127,8 @@ public class wiseSayingRepository {
             writer.write("[\n");
             int size = map.size();
             int index = 0;
-            for (Map.Entry<Integer, wiseSaying> entry : map.entrySet()) {
-                wiseSaying wiseSaying = entry.getValue();
+            for (Map.Entry<Integer, WiseSaying> entry : map.entrySet()) {
+                WiseSaying wiseSaying = entry.getValue();
                 writer.write("   {\n");
                 writer.write("    \"id\": " + wiseSaying.getId() + ",\n");
                 writer.write("    \"content\": \"" + wiseSaying.getMessage() + "\",\n");

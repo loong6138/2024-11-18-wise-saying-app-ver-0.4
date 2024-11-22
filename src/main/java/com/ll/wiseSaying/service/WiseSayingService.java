@@ -1,13 +1,13 @@
 package com.ll.wiseSaying.service;
 
-import com.ll.wiseSaying.domain.wiseSaying;
-import com.ll.wiseSaying.repository.wiseSayingRepository;
+import com.ll.wiseSaying.domain.WiseSaying;
+import com.ll.wiseSaying.repository.WiseSayingRepository;
 
-public class wiseSayingService {
+public class WiseSayingService {
 
-    wiseSayingRepository repository = new wiseSayingRepository();
+    WiseSayingRepository repository = new WiseSayingRepository();
 
-    public wiseSayingService() {
+    public WiseSayingService() {
         repository.loadQuote();
         repository.loadLastId();
     }
@@ -30,7 +30,7 @@ public class wiseSayingService {
         repository.updateById(id, message, author);
     }
 
-    public wiseSaying findById(int id) {
+    public WiseSaying findById(int id) {
         try {
             return repository.findById(id);
         } catch (Exception e) {

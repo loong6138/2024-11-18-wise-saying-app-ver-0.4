@@ -1,11 +1,11 @@
 package com.ll.wiseSaying;
 
-import com.ll.wiseSaying.controller.wiseSayingController;
+import com.ll.wiseSaying.controller.WiseSayingController;
 
 public class Main {
 
     public static void main(String[] args) {
-        wiseSayingController controller = new wiseSayingController();
+        WiseSayingController controller = new WiseSayingController();
 
         controller.run();
     }

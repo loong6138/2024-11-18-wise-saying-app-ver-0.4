@@ -1,13 +1,13 @@
 package com.ll.wiseSaying.controller;
 
-import com.ll.wiseSaying.domain.wiseSaying;
-import com.ll.wiseSaying.service.wiseSayingService;
+import com.ll.wiseSaying.domain.WiseSaying;
+import com.ll.wiseSaying.service.WiseSayingService;
 
 import java.util.Scanner;
 
-public class wiseSayingController {
+public class WiseSayingController {
 
-    wiseSayingService service = new wiseSayingService();
+    WiseSayingService service = new WiseSayingService();
 
     public void run() {
 
@@ -39,7 +39,7 @@ public class wiseSayingController {
 
             } else if (input.startsWith("수정?id=")) {
                 int id = Integer.parseInt(input.substring(6));
-                wiseSaying existingValue = service.findById(id);
+                WiseSaying existingValue = service.findById(id);
                 if (existingValue != null) {
                     System.out.println("명언(기존) : " + existingValue.getMessage());
                     System.out.print("명언 : ");
