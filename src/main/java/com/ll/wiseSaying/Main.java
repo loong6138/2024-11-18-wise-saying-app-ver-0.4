@@ -3,7 +3,7 @@ package com.ll.wiseSaying;
 public class Main {
 
     public static void main(String[] args) {
-        WiseSayingController controller = new WiseSayingController();
+        wiseSayingController controller = new wiseSayingController();
 
         controller.run();
     }

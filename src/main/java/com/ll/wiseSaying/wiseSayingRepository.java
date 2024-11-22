@@ -5,16 +5,16 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class WiseSayingRepository {
+public class wiseSayingRepository {
 
-    LinkedHashMap<Integer, WiseSaying> map = new LinkedHashMap<>();
-    private int number;
+    LinkedHashMap<Integer, wiseSaying> map = new LinkedHashMap<>();
+    private int lastId;
 
     int register(String message, String author) {
-        ++number;
-        WiseSaying wiseSaying = new WiseSaying(this.number, message, author);
-        map.put(this.number, wiseSaying);
-        return number;
+        ++lastId;
+        wiseSaying wiseSaying = new wiseSaying(this.lastId, message, author);
+        map.put(this.lastId, wiseSaying);
+        return lastId;
     }
 
     void deleteById(int number) {
@@ -25,27 +25,27 @@ public class WiseSayingRepository {
         }
     }
 
-    void updateById(int number, String message, String author) {
-        WiseSaying update = new WiseSaying(number, message, author);
-        map.replace(number, update);
+    void updateById(int id, String message, String author) {
+        wiseSaying update = new wiseSaying(id, message, author);
+        map.replace(id, update);
     }
 
-    WiseSaying findById(int number) {
-        WiseSaying findById = map.get(number);
+    wiseSaying findById(int id) {
+        wiseSaying findById = map.get(id);
         if (findById == null) {
-            throw new NullPointerException(number + "");
+            throw new NullPointerException(id + "");
         } else {
-            return map.get(number);
+            return map.get(id);
         }
     }
 
     void findAll() {
         // 키 내림차순 정렬
-        List<Integer> numbers = new ArrayList<>(map.keySet());
-        numbers.sort(Collections.reverseOrder());
+        List<Integer> ids = new ArrayList<>(map.keySet());
+        ids.sort(Collections.reverseOrder());
 
         // 정렬된 키 순서로 출력
-        for (Integer number : numbers) {
+        for (Integer number : ids) {
             System.out.println(map.get(number));
         }
     }

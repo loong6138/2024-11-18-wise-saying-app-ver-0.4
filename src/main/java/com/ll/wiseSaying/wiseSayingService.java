@@ -1,16 +1,16 @@
 package com.ll.wiseSaying;
 
-public class WiseSayingService {
+public class wiseSayingService {
 
-    WiseSayingRepository repository = new WiseSayingRepository();
+    wiseSayingRepository repository = new wiseSayingRepository();
 
     int register(String message, String author) {
         return repository.register(message, author);
     }
 
-    boolean deleteById(int number) {
+    boolean deleteById(int id) {
         try {
-            repository.deleteById(number);
+            repository.deleteById(id);
             return true;
         } catch (Exception e) {
             repository.exceptionHandler(e);
@@ -18,13 +18,13 @@ public class WiseSayingService {
         }
     }
 
-    void updateById(int number, String message, String author) {
-        repository.updateById(number, message, author);
+    void updateById(int id, String message, String author) {
+        repository.updateById(id, message, author);
     }
 
-    WiseSaying findById(int number) {
+    wiseSaying findById(int id) {
         try {
-            return repository.findById(number);
+            return repository.findById(id);
         } catch (Exception e) {
             repository.exceptionHandler(e);
             return null;

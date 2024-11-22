@@ -2,9 +2,9 @@ package com.ll.wiseSaying;
 
 import java.util.Scanner;
 
-public class WiseSayingController {
+public class wiseSayingController {
 
-    WiseSayingService service = new WiseSayingService();
+    wiseSayingService service = new wiseSayingService();
 
     void run() {
 
@@ -20,8 +20,8 @@ public class WiseSayingController {
                 String message = scanner.nextLine();
                 System.out.print("작가 : ");
                 String author = scanner.nextLine();
-                int number = service.register(message, author);
-                System.out.println(number + "번 명언이 등록되었습니다.");
+                int id = service.register(message, author);
+                System.out.println(id + "번 명언이 등록되었습니다.");
 
             } else if (input.equals("목록")) {
                 System.out.println("번호 / 작가 / 명언");
@@ -35,8 +35,8 @@ public class WiseSayingController {
                 }
 
             } else if (input.contains("수정?id=")) {
-                int number = Integer.parseInt(input.substring(6));
-                WiseSaying saying = service.findById(number);
+                int id = Integer.parseInt(input.substring(6));
+                wiseSaying saying = service.findById(id);
                 if (saying != null) {
                     System.out.println("명언(기존) : " + saying.getMessage());
                     System.out.print("명언 : ");
@@ -44,7 +44,7 @@ public class WiseSayingController {
                     System.out.println("작가(기존) : " + saying.getAuthor());
                     System.out.print("작가 : ");
                     String author = scanner.nextLine();
-                    service.updateById(number, message, author);
+                    service.updateById(id, message, author);
                 }
 
             } else if (input.equals("종료")) {

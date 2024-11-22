@@ -1,12 +1,12 @@
 package com.ll.wiseSaying;
 
-public class WiseSaying {
+public class wiseSaying {
 
     private int number;
     private String message;
     private String author;
 
-    public WiseSaying(int number, String message, String author) {
+    public wiseSaying(int number, String message, String author) {
         this.number = number;
         this.message = message;
         this.author = author;
