@@ -33,6 +33,7 @@ public class WiseSayingController {
                 if (delete) {
                     System.out.println(Integer.parseInt(input.substring(6)) + "번 명언이 삭제되었습니다.");
                 }
+
             } else if (input.contains("수정?id=")) {
                 int number = Integer.parseInt(input.substring(6));
                 WiseSaying saying = service.findById(number);
@@ -45,6 +46,7 @@ public class WiseSayingController {
                     String author = scanner.nextLine();
                     service.updateById(number, message, author);
                 }
+
             } else if (input.equals("종료")) {
                 scanner.close();
                 break;
