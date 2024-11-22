@@ -9,7 +9,7 @@ public class wiseSayingController {
 
     wiseSayingService service = new wiseSayingService();
 
-    void run() {
+    public void run() {
 
         System.out.println("== 명언 앱 ==");
 
