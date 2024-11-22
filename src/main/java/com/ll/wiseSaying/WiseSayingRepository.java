@@ -12,7 +12,7 @@ public class WiseSayingRepository {
 
     int register(String message, String author) {
         ++number;
-        WiseSaying wiseSaying = new WiseSaying(message, author, this.number);
+        WiseSaying wiseSaying = new WiseSaying(this.number, message, author);
         map.put(this.number, wiseSaying);
         return number;
     }
@@ -23,6 +23,20 @@ public class WiseSayingRepository {
             throw new NullPointerException(number + "");
         } else {
             map.remove(number);
+        }
+    }
+
+    void updateById(int number, String message, String author) {
+        WiseSaying update = new WiseSaying(number, message, author);
+        map.replace(number, update);
+    }
+
+    WiseSaying findById(int number) {
+        WiseSaying findById = map.get(number);
+        if (findById == null) {
+            throw new NullPointerException(number + "");
+        } else {
+            return map.get(number);
         }
     }
 

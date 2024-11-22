@@ -18,6 +18,19 @@ public class WiseSayingService {
         }
     }
 
+    void updateById(int number, String message, String author) {
+        repository.updateById(number, message, author);
+    }
+
+    WiseSaying findById(int number) {
+        try {
+            return repository.findById(number);
+        } catch (Exception e) {
+            repository.exceptionHandler(e);
+            return null;
+        }
+    }
+
     void findAll() {
         repository.findAll();
     }

@@ -2,14 +2,14 @@ package com.ll.wiseSaying;
 
 public class WiseSaying {
 
+    private int number;
     private String message;
     private String author;
-    private int number;
 
-    public WiseSaying(String message, String author, int number) {
+    public WiseSaying(int number, String message, String author) {
+        this.number = number;
         this.message = message;
         this.author = author;
-        this.number = number;
     }
 
     public String getMessage() {
