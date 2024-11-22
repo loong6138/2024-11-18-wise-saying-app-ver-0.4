@@ -1,12 +1,12 @@
 package com.ll.wiseSaying;
 
-import com.ll.wiseSaying.controller.WiseSayingController;
+import com.ll.wiseSaying.app.App;
 
 public class Main {
 
     public static void main(String[] args) {
-        WiseSayingController controller = new WiseSayingController();
 
-        controller.run();
+        App app = new App();
+        app.run();
     }
 }
