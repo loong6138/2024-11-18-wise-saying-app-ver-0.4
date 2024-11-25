@@ -1,6 +1,6 @@
 package com.ll.wiseSaying.repository;
 
-import com.ll.wiseSaying.domain.WiseSaying;
+import com.ll.wiseSaying.entity.WiseSaying;
 
 import java.io.*;
 import java.util.*;

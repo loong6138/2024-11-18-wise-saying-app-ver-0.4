@@ -1,6 +1,6 @@
 package com.ll.wiseSaying.service;
 
-import com.ll.wiseSaying.domain.WiseSaying;
+import com.ll.wiseSaying.entity.WiseSaying;
 import com.ll.wiseSaying.repository.WiseSayingRepository;
 
 public class WiseSayingService {
