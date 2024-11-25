@@ -1,4 +1,4 @@
-package com.ll.domain.wiseSaying.app;
+package com.ll;
 
 import com.ll.domain.wiseSaying.controller.WiseSayingController;
 
