@@ -1,7 +1,7 @@
-package com.ll.wiseSaying.service;
+package com.ll.domain.wiseSaying.service;
 
-import com.ll.wiseSaying.entity.WiseSaying;
-import com.ll.wiseSaying.repository.WiseSayingRepository;
+import com.ll.domain.wiseSaying.entity.WiseSaying;
+import com.ll.domain.wiseSaying.repository.WiseSayingRepository;
 
 public class WiseSayingService {
 

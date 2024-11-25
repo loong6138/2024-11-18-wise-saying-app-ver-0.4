@@ -1,6 +1,6 @@
-package com.ll.wiseSaying.app;
+package com.ll.domain.wiseSaying.app;
 
-import com.ll.wiseSaying.controller.WiseSayingController;
+import com.ll.domain.wiseSaying.controller.WiseSayingController;
 
 import java.util.Scanner;
 

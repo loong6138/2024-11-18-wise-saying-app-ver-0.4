@@ -1,6 +1,6 @@
-package com.ll.wiseSaying;
+package com.ll.domain.wiseSaying;
 
-import com.ll.wiseSaying.app.App;
+import com.ll.domain.wiseSaying.app.App;
 
 public class Main {
 
