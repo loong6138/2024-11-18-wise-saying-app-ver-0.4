@@ -9,9 +9,9 @@ public class WiseSayingRepository {
 
     LinkedHashMap<Integer, WiseSaying> map = new LinkedHashMap<>();
     private int lastId;
-    private static final String QUOTE_FOLDER = System.getProperty("user.dir") + "/src/main/java/com/ll/wiseSaying/db/wiseSaying";
-    private static final String LAST_ID_FILE = System.getProperty("user.dir") + "/src/main/java/com/ll/wiseSaying/db/wiseSaying/lastId.txt";
-    private static final String DATA_FILE = System.getProperty("user.dir") + "/src/main/java/com/ll/wiseSaying/db/wiseSaying/data.json";
+    private static final String QUOTE_FOLDER = System.getProperty("user.dir") + "/src/main/java/com/ll/domain/wiseSaying/db/wiseSaying";
+    private static final String LAST_ID_FILE = System.getProperty("user.dir") + "/src/main/java/com/ll/domain/wiseSaying/db/wiseSaying/lastId.txt";
+    private static final String DATA_FILE = System.getProperty("user.dir") + "/src/main/java/com/ll/domain/wiseSaying/db/wiseSaying/data.json";
 
     public int register(String message, String author) {
         ++lastId;
